@@ -1,0 +1,53 @@
+<nav class="navbar fixed">
+    <div class="navbar-head">
+      <a routerLink="/">HR System</a>
+    </div>
+    <div class="navbar-links">
+     <a routerLink="/Signup" class="nav-link" *ngIf="tokencheck()==null" (click)="toggleNav()">Signup</a>
+ 
+     <li class="nav-item" *ngIf="tokencheck()">
+      <a routerLink="/records" class="nav-link"  (click)="toggleNav()">Attendance Records</a>
+     </li>
+     <li class="nav-item" *ngIf="tokencheck()">
+      <a routerLink="/attendance" class="nav-link"  (click)="toggleNav()">Attendance</a>
+     </li>
+      
+      <li class="nav-item" *ngIf="tokencheck()">
+        <a class="nav-link" (click)="signout()" routerLink="/Signin">
+          Sign Out <i class="fa-solid fa-right-to-bracket"></i>
+        </a>
+      </li>
+  
+      <li class="nav-item" *ngIf="tokencheck() == null">
+        <a class="nav-link" routerLink="/Signin">
+          Sign In <i class="fa-solid fa-door-open"></i>
+        </a>
+      </li>
+    </div>
+  
+    <!-- Toggle button for mobile view -->
+    <button class="navbar-toggle" (click)="toggleNav()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </nav>
+  
+  <!-- Responsive Navbar Links -->
+  <div class="navbar-links-responsive" *ngIf="isNavOpen">
+    <a routerLink="/Signup" class="nav-link" *ngIf="tokencheck()==null" (click)="toggleNav()">Signup</a>
+    
+    <li class="nav-item" *ngIf="tokencheck()">
+      <a routerLink="/records" class="nav-link" (click)="toggleNav()">Attendance Records</a>
+    <a routerLink="/attendance" class="nav-link" (click)="toggleNav()">Attendance</a>
+      <a class="nav-link" (click)="signout()" routerLink="/Signin">
+        Sign Out <i class="fa-solid fa-right-to-bracket"></i>
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="tokencheck() == null">
+      <a class="nav-link" routerLink="/Signin">
+        Sign In <i class="fa-solid fa-door-open"></i>
+      </a>
+    </li>
+  </div>
+  

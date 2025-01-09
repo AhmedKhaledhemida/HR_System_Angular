@@ -1,0 +1,62 @@
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="heading">Sign In</div>
+      <form class="form" #signinForm="ngForm" (ngSubmit)="signin()">
+        <!-- Email Input -->
+        <input
+          placeholder="E-mail"
+          id="email"
+          name="email"
+          type="email"
+          class="input"
+          [(ngModel)]="userData.email"
+          #email="ngModel"
+          required
+          email
+        />
+        <div
+          class="text-danger fw-bold my-2"
+          *ngIf="signinForm.touched && email.invalid"
+        >
+          <span *ngIf="email.errors?.['required']"> Email is required. </span>
+          <span *ngIf="email.errors?.['email']">
+            A valid email is required.
+          </span>
+        </div>
+
+        <!-- Password Input -->
+        <input
+          placeholder="Password"
+          id="password"
+          name="password"
+          type="password"
+          class="input"
+          [(ngModel)]="userData.password"
+          #password="ngModel"
+          required
+          minlength="8"
+        />
+        <div
+          class="text-danger fw-bold my-2"
+          *ngIf="signinForm.touched && password.invalid"
+        >
+          <span *ngIf="password.errors?.['required']">
+            Password is required.
+          </span>
+          <span *ngIf="password.errors?.['minlength']">
+            Password must be at least 8 characters long.
+          </span>
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          <span class="Error-msg text-danger fw-bold my-2">{{
+            errorMessage
+          }}</span>
+        </div>
+        <!-- Submit Button -->
+        <input value="Sign in" type="submit" class="login-button" />
+        <p class="ifnot">Don't have an account? <a href="Signup">Sign up</a></p>
+      </form>
+    </div>
+  </div>
+</section>

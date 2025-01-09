@@ -1,0 +1,32 @@
+.container {
+  margin-top: 75px;
+}
+
+.employee-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.employee-form input {
+  width: 100%;
+  background: white;
+  border: none;
+  padding: 15px 20px;
+
+  margin-top: 20px;
+  box-shadow: #f4f4f4 0px 10px 10px -5px;
+  border-inline: 2px solid transparent;
+}
+
+.addBtn {
+  width: 200px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  transition: all 0.5s;
+}
+.addBtn:hover {
+  background-color: #0056b3;
+}

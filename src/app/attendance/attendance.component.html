@@ -1,0 +1,119 @@
+<div *ngIf="!isSignedIn; else employeeTable">
+  <h1 class="Error-msg">{{ errorMessage }}</h1>
+</div>
+<!-- Table for displaying employees -->
+<ng-template #employeeTable>
+  <!-- Form for adding a new employee -->
+  <app-addemployee></app-addemployee>
+
+  <div class="container mx-auto">
+    <div class="table-responsive">
+      <table class="table text-center">
+        <thead class="table-light">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Attendance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                class="btn empBtn"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                (click)="openEditModal(employee)"
+              >
+                Edit
+              </button>
+            </td>
+            <!-- Button to submit attendance -->
+            <td>
+              <div class="attendance">
+                <input
+                  class="dateinput btn p-0 m-0"
+                  type="date"
+                  [(ngModel)]="employee.attendanceDate"
+                />
+                <button
+                  class="btn empBtn2 ms-2"
+                  (click)="
+                    markAttendance(employee._id, employee.attendanceDate)
+                  "
+                >
+                  Attend
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            Edit Employee Data
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="employee-form input-group">
+            <input
+              placeholder="Name"
+              type="text"
+              [(ngModel)]="editEmployees.name"
+              class="form-control w-100 mb-2"
+            />
+            <input
+              placeholder="E-mail"
+              type="email"
+              [(ngModel)]="editEmployees.email"
+              class="form-control w-100"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            (click)="editEmployee()"
+          >
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

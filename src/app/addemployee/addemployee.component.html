@@ -1,0 +1,21 @@
+<div class="container">
+
+  <div class="employee-form">
+    <input
+      placeholder="Name"
+      id="name"
+      type="text"
+      class="input"
+      [(ngModel)]="newEmployee.name"
+    />
+    <input
+      placeholder="E-mail"
+      id="email"
+      type="email"
+      class="input"
+      [(ngModel)]="newEmployee.email"
+    />
+  
+    <button class="btn  addBtn" (click)="addEmployee()">Add Employee</button>
+  </div>
+</div>

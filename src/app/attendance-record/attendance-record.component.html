@@ -1,0 +1,28 @@
+<div class="attendance-container">
+  <h1 *ngIf="!isSignedIn;else employeeTable"  class="error-message">
+    You are not signed in as an HR Employee.
+  </h1>
+  <ng-template #employeeTable>
+  <h1 class="recordHead">Employees Records</h1>
+  <table *ngIf="attendanceRecords.length > 0" class="attendance-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Employee Name</th>
+        <th>Attendance Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of attendanceRecords; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ record.employee?.name || "No Name Available" }}</td>
+        <td>{{ record.date | date : "MM-dd-yyyy" }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 *ngIf="attendanceRecords.length === 0 && isSignedIn">
+    No attendance records found.
+  </h2>
+</ng-template>
+</div>

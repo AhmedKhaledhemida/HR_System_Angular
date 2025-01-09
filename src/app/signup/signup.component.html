@@ -1,0 +1,83 @@
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="heading">Sign Up</div>
+      <form class="form" [formGroup]="registerForm" (ngSubmit)="signup()">
+        <input
+          placeholder="Name"
+          id="name"
+          name="name"
+          type="text"
+          class="input"
+          formControlName="name"
+        />
+        <div
+          class="text-danger fw-bold my-2"
+          *ngIf="
+            registerForm.controls['name'].invalid &&
+            registerForm.controls['name'].touched
+          "
+        >
+          <span *ngIf="registerForm.controls['name'].errors?.['required']">
+            Name is required.
+          </span>
+          <span *ngIf="registerForm.controls['name'].errors?.['minlength']">
+            Name must be at least 3 characters long.
+          </span>
+        </div>
+
+        <input
+          placeholder="E-mail"
+          id="email"
+          type="email"
+          class="input"
+          formControlName="email"
+        />
+        <div
+          class="text-danger fw-bold my-2"
+          *ngIf="
+            registerForm.controls['email'].invalid &&
+            registerForm.controls['email'].touched
+          "
+        >
+          <span *ngIf="registerForm.controls['email'].errors?.['required']">
+            Email is required.
+          </span>
+          <span *ngIf="registerForm.controls['email'].errors?.['email']">
+            A valid email is required.
+          </span>
+        </div>
+
+        <input
+          placeholder="Password"
+          id="password"
+          type="password"
+          class="input"
+          formControlName="password"
+        />
+        <div
+          class="text-danger fw-bold my-2"
+          *ngIf="
+            registerForm.controls['password'].invalid &&
+            registerForm.controls['password'].touched
+          "
+        >
+          <span *ngIf="registerForm.controls['password'].errors?.['required']">
+            Password is required.
+          </span>
+          <span *ngIf="registerForm.controls['password'].errors?.['minlength']">
+            Password must be at least 8 characters long.
+          </span>
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          <span class="Error-msg text-danger fw-bold my-2">{{
+            errorMessage
+          }}</span>
+        </div>
+        <input value="Sign up" type="submit" class="login-button" />
+
+        <p class="ifnot">Have an account? <a href="Signin">Sign in</a></p>
+      </form>
+    </div>
+  </div>
+</section>

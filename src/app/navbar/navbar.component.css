@@ -1,0 +1,74 @@
+/* Base Styles for Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+
+  }
+  
+  .navbar-head a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+  }
+  
+  .navbar-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 18px;
+  }
+  
+  .nav-item {
+    list-style: none;
+  }
+  
+  /* Navbar Toggle Button */
+  .navbar-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .navbar-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+  }
+  
+  /* Responsive links for mobile */
+  .navbar-links-responsive {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    padding: 10px;
+  }
+  
+  .navbar-links-responsive .nav-link {
+    padding: 5px 0;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .navbar-links {
+      display: none;
+    }
+    .navbar-toggle {
+      display: flex;
+    }
+    .navbar-links-responsive {
+      display: flex;
+    }
+  }
+  
